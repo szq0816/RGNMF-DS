@@ -3,4 +3,4 @@ RGNMF-DS
 run demo.m
 
 ## Email
-longqinghan@126.com
+If you have any questions, please do not hesitate to contact Qinghan (longqinghan@126.com).
