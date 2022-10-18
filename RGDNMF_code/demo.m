@@ -97,7 +97,7 @@ for i = 1:12
 % %     para.alpha = 8;
 % %     para.k = nfeature;
 % %     para.maxiter = 200;
-%     para.beta = 150;
+% %     para.beta = 150;
 % 
 % 
 %     % Dissimilarity and Similarity matrix
@@ -125,18 +125,14 @@ for i = 1:12
 %     
 % 
 %     [U,V,obj] = rssNMF(X', para, W, D, initU,initV,initS);
-% %     [U,V,obj] = L21_Ggssnmf(X', D, para, A, S, GW, GD, initU, initV);
-% %     nsamp = size(X,1);
-% %     idx = randperm(length(true_labs));
 % %     
 %       [project_labs, center] = litekmeans(V', nnClass, 'Start', idx(1:nnClass));
 %     
-% %     [U3,V3,obj3] = L21_Ggssnmf(X', D, para, A, S, GW, GD, initU, initV);
 % 
 % 
 
 
-     %% L21_Ggssnmf
+     %% RGNMF-DS
 %     para = [];
 %     para.lambda = 0;
 %     para.k = nfeature;
@@ -159,18 +155,9 @@ for i = 1:12
 
     GW = constructW(X,options);%nnSWM1(X,X,5,1,0);
     GD = diag(sum(GW, 2));
-
     
-    % init
-%     [d,n] = size(X');
-%     initU=rand(d,nfeature);
-%     initV=rand(nfeature,n);
-%     
+    [U,V,obj] = RGNMF_DS(X', D, para, A, S, GW, GD, initU, initV);
     
-    [U,V,obj] = L21_Ggssnmf(X', D, para, A, S, GW, GD, initU, initV);
-% %     nsamp = size(X,1);
-%     idx = randperm(length(true_labs));
-%     
       [project_labs, center] = litekmeans(V', nnClass, 'Start', idx(1:nnClass));
 
     %% 评估
