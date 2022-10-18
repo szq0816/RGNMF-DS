@@ -1,4 +1,4 @@
-function [U,V,obj]=Ggssnmf(X,D,para,A,W,GW,GD, initU,initV)
+function [U,V,obj]=RGNMF_DS(X,D,para,A,W,GW,GD, initU,initV)
 % X in d \times N
 
 lambda=para.lambda;  % the hyper papramter lambda
